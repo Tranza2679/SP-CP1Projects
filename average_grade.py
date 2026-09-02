@@ -2,7 +2,7 @@
 
 
 print("Hello! Welcome to average grade calculator!")
-print("")
+print("If you write a grade wrong then write anything that is NOT a number, don't use precetages!")
 while True:
     try:
         grade_one = float(input("What is the grade of your first class as a number: "))
@@ -13,10 +13,10 @@ while True:
         grade_six = float(input("What is the grade of your sixth class as a number: "))
         grade_seven = float(input("What is the grade of your seventh class as a number: "))
     except: 
-        print("That's not a number!")
+        print("That's not a an actual number grade! now you have to write the whole thing again")
     else: 
         break 
-average_grade = grade_one + grade_two + grade_three + grade_four + grade_five + grade_six + grade_seven
-
+average_grade = (grade_one + grade_two + grade_three + grade_four + grade_five + grade_six + grade_seven)/7
+print("Your average grade would be", round(average_grade,2))
 
 
