@@ -22,9 +22,9 @@ last_fixed = "".join(last_seperated)
 full_name = first_fixed.title() + " " + last_fixed.title()
 print("Hello " +full_name.title())
 
-print(full_name.isalpha) #Has to be all letters(no spaces too)
-print(full_name.isnumeric) #Has to be all numbers
-print(full_name.isupper) #has to be all uppercase
+print(full_name.isalpha) #Has to be all letters(no spaces too) returns true if all letters, returns false if not.
+print(full_name.isnumeric) #Has to be all numbers, returns true if all numbers, returns false if not
+print(full_name.isupper) #has to be all uppercase, returns true if all uppercase, returns false if not
 
 
 print(sentence.lower()) #all worda are in lower case
@@ -32,3 +32,13 @@ print(sentence.upper()) #all words are in upper case
 print(sentence.capitalize()) #first word is capitalized
 print(sentence.title()) #All first letters are capitalized
 print(new_sentence)
+
+#formatted string
+print(f"Hello {first_fixed.title()} {last_fixed} welcome to my program!")
+
+letter = input("Give me a letter: ")
+letter = letter[0].lower()
+number_value = ord(letter) #ord looks up the asky value 
+number_value += 2
+new_letter = chr(number_value)
+print(f"Your letter was {letter} now it is {new_letter}")
