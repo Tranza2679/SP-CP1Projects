@@ -26,13 +26,11 @@ print("Hello " +full_name.title())
 string_phone_num = str(phone_num)
 first_part = string_phone_num[0:3]
 second_part = string_phone_num[4:7]
-third_part = string_phone_num[7:13]
+third_part = string_phone_num[7:11]
 full_phone_num = first_part + " " + second_part + " " + third_part
+print(f"Your phone number is {full_phone_num}")
 
-print(first_part)
-print(second_part)
-print(third_part)
-print(full_phone_num)
+print(f"Your GPA is {round(gpa,1)}!")
 
 
 
