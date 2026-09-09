@@ -24,6 +24,6 @@ full_name = first_fixed.title() + " " + last_fixed.title()
 print("Hello " +full_name.title())
 
 string_phone_num = str(phone_num).split()
-first_part = string_phone_num[0,2]
+first_part = string_phone_num[0:3]
 print(first_part)
 
