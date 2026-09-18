@@ -26,3 +26,4 @@ fav = float(input("What is your favorite number: "))
 print(f"{float(fav)**2} is {fav} squared!")
 print(round(pi,2))
 print(int(pi)) 
+
