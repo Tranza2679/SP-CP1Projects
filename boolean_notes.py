@@ -10,3 +10,5 @@ if  18 < age: # boolean equation, because it always returns either a True or Fal
     print("You an adult highkey")
 
 print(bool(age)) #If the number is 0 then it is false, empty quotation marks would make it false as well. 
+
+grade = input("What is your grade")
