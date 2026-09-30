@@ -1,4 +1,4 @@
-#Santiago Pineda, What is my grade
+#SP programming 1, What is my grade
 continue_program = True
 while continue_program:
     while True:
