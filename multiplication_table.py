@@ -22,11 +22,11 @@ if number_to_multiply >= 20:
     print("That's going to take forever for all of it to print out, but you chose this. Have fun!")
 print(f"The number being used is {x}")
 while True:
-    for i in range(1,number_to_multiply):
-        print(i * x)
-        time.sleep(.5)
+    for i in range(1,number_to_multiply+1):
+        print((f"{i * x:4}") , end=" ")
+        time.sleep(.05)
     x += 1
     if x <= 12:
-        print(f"The number being used is {x}")
+        print(f"The number being used next is {x}")
     else:
         break
