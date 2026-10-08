@@ -3,6 +3,7 @@ import math
 
 
 print("Welcome to factorial calc(short for calculator)")
+
 while True:
     try:
         number = int(input("What number do you want to find the factorial for? "))
@@ -20,5 +21,12 @@ while number < 0:
         else:
             break
 
-full_answer = map(int, math.factorial, number)
-print(*list(full_answer))
+factorials = []
+factorial_number = str(math.factorial(number))
+def addToList(lists):
+    lists.append((factorial_number))
+print(factorial_number)
+
+full_answer = addToList(factorials)
+
+print((full_answer))
