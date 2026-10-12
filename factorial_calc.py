@@ -1,32 +1,33 @@
 # Santiago Pineda, Factorial calculator
 import math
 
-number_list = []
 print("Welcome to factorial calc(short for calculator)")
-
 while True:
-    try:
-        number = int(input("What number do you want to find the factorial for? "))
-    except:
-        print("Please write a whole number")
-    else:
-        break
-while number < 0:
-    print("Please write something else")
     while True:
         try:
             number = int(input("What number do you want to find the factorial for? "))
+            if number < 0:
+                print("That's below zero, please try again.")
+                continue
+            break
         except:
             print("Please write a whole number")
         else:
             break
-number_list.append(number)
-full_factorial = math(map(math.factorial, number_list))
-print(*list(f"{full_factorial}"))
-"""factorials = []
-factorial_number = str(math.factorial(number))
-def addToList(lists):
-    lists.append((factorial_number))
-print(factorial_number)
+    def factorialize(num):
+        return math.factorial(num)
 
-full_answer = addToList(factorials)"""
+    full_factorial = list(map(factorialize, [number]))
+    fixed_factorial = list(full_factorial)[0]
+    print((f"{number}! = {fixed_factorial}"))
+
+    user_input = str(input("Do you want to continue using the factorial calculator? Yes or No ")).strip().title()
+    if user_input == "Yes":
+        print("Okie Doki!")
+        continue
+    elif user_input == "No":
+        print("Alright:(")
+        break
+    else:
+        print("I'll just take that as a no...")
+        break
