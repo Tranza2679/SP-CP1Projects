@@ -2,19 +2,16 @@
 import time
 
 locations = ["file cabinet" , "exit door", "hallway", "broken containment block", "morbid art piece"]
-turn_count = 0
-turn_increasor = 1
 full_count = 1
 combination = 404957
 live = False
 
-def turnCountIncreasor(actual_count,count,increasor):
-    actual_count = (count + increasor)
-    increasor =+ 1
-    if actual_count == 1:
-        print(f"You have done {actual_count} action out of 10.")
-    else:
-        print(f"You have done {actual_count} actions out of 10.")
+def turnCountIncreasor():
+    full_count + 1
+    print(f"{full_count}")
+    return full_count
+
+
 
 
 print("You are a researcher from Limbus Company. The day was supposed to go normally... just another day of researching abnormalities that the bus team had contained. Yet, everything that could have possibly went wrong infact did. Why did all of this happen? Well somehow some people were able to break in... why were they here? Well from what little you heard from the people that broke in, you remember hearing some beast of a man yelling \"Buddy!\" and some weird robot artist trying to make art out of some of the researchers... Welp, unluckily for you, you just so happened to have some spiral weapon attached into you with a 6 digit combination. Everytime you try to move, the spiral digs deeper into you, so you have to try to solve it soon or die trying...") 
@@ -34,8 +31,8 @@ while full_count < 10:
         print("Note, if you have already visited a location then you cannot visit it again. Why? Well, the Spiral would not like that, how would it know? A question for another day. Just don't attempt to visit a location again, or you will deviate from the path. ")
         while True:
                 try:
-                    location_decision = int(input("Will you\n 1: Go to the file cabinet. 2: go to the exit door. 3: Go to the hallway. 4: Go to the Broken containment block. 5: Inspect the morbid art piece"))
-                    if location_decision > 5:
+                    location_decision = int(input("Will you\n 1: Go to the file cabinet. 2: go to the exit door. 3: Go to the hallway. 4: Inspect the morbid art piece. "))
+                    if location_decision > 4:
                         print("Well that's not a basic option you have... ")
                         continue
                 except:
@@ -43,7 +40,7 @@ while full_count < 10:
                 else:
                     break
         if location_decision == 1 and "file cabinet" in locations:
-            turnCountIncreasor(full_count,turn_count,turn_increasor)
+            turnCountIncreasor()
             print("You feel the spiral drill deeper into you... BUT you're at the file cabinet on the floor. There you see an assortment of files, but they seem to be a bit... messed up and slashed. Whoever is attacking this place really wanted to cause some damage.") 
             while True:
                 try:
@@ -58,11 +55,11 @@ while full_count < 10:
             if inspect_files == 1:
                 print("You look through the files. All it seems to be are records of employees. You read quickly three files. One was a friend of yours, they got changed to another department of the company back 5 years ago. Another file is about an abnormality, though for some reason after reading the name of it you feel an urge to stop reading that file. You find a file of a employee from the Bus department, most of the information is slashed besides their name being \"Ryoshu\" and their birthday being on April, but the exact date is cut apart.")
                 locations.remove("file cabinet")
-                turnCountIncreasor(full_count,turn_count,turn_increasor)
+                turnCountIncreasor()
             elif inspect_files == 2:
                 print("You look around, and find a lot of employees that are unresponsive. You check the current time of a digital clock, seems it was on a timer that reached its end. The clock isn't necessarily ringing out loudly, but most of the numbers on it have been cut and only the second number is shown which is a 0.")
                 locations.remove("file cabinet")
-                turnCountIncreasor(full_count,turn_count,turn_increasor)
+                turnCountIncreasor()
 
         elif location_decision == 2 and "exit door" in locations:
             print("You notice the exit door, though you wonder if you could actually run to it.")
@@ -83,7 +80,7 @@ while full_count < 10:
             elif run_or_not == 2:
                 print("You realize that running with your current circumstances, would not end well. But while you look away you notice 5 people who attempted to run to the exit door. Maybe that's something to note.")
                 locations.remove("exit door")
-                turnCountIncreasor(full_count,turn_count,turn_increasor)
+                turnCountIncreasor()
         elif location_decision == 3 and "hallway" in locals:
             print("You walk in the hallway. Or really just walking for a moment before looking around. You look around 3 different rooms. One has a beautiful hue of teal. One has what seems to be... electronic music playing? One has a good amount of people talking. ")
             while True:
@@ -97,9 +94,12 @@ while full_count < 10:
                 else:
                     break
             if where_to_go == 1:
-                print("You are allured by the beautiful hue of teal. You endlessely walk to it, forgetting all about the spiral. Eventually you do find")
-
-
+                print("You are allured by the beautiful hue of teal. You endlessely walk to it, forgetting all about the spiral. Eventually you do find what it was, as a small fairy touches your hand. However, you walked too much and wasted all of your actions")
+                break
+            elif where_to_go == 2:
+                print("You enter that room. There you are met by a girl wearing a large white winter jacket, with chains on her arms that don't really seem to be affecting her. The music is coming from a small boombox on her hip. She notices you and for a moment is about to cut you with a sword before shrugging. \"Yo bro, you really ain't looking good no cap. Oh you got one of those spiral things, I would help you if I actually knew the code but lowkey I don't. But I remember hearing robo unc talk about how it was Yoshide's birthday. You know who that is? she apparently took on some new name, Ryoshu or something, honestly pretty auraful. Am I right?\"")
+                print("Well, after she continued yapping about how cool this Ryoshu is you were able to find a moment to sneak away. At least you know what the code is, technically. Maybe you might find more stuff if you go to the file cabinet if you haven't gone there already...")
+                turnCountIncreasor()
     elif user_choice == 2: 
         print("You look at the spiral, as you grab onto it. It seems to take a 6 digit number combo")
         while True:
@@ -118,7 +118,8 @@ while full_count < 10:
             break
         else:
             print("Welp, you got the code wrong. A for effort though! Even if there is no A in effort.... But the spiral does drill deeper.")
-            turnCountIncreasor(full_count,turn_count,turn_increasor)
+            turnCountIncreasor()
+
     else:
         print("How did you possibly get here? Well if this somehow happened, then you deserve what happens next")
         break
