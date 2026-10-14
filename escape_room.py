@@ -1,5 +1,5 @@
 # Santiago Pineda, Escape Room
-import time
+
 
 locations = ["file cabinet" , "exit door", "hallway", "morbid art piece"]
 combination = 404957
