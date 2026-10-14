@@ -76,10 +76,13 @@ while turn_count < 10:
             live = True
             break
         else:
-            print("Welp, you got the code wrong. A for effort though! Even if there is no A in effort....")
+            print("Welp, you got the code wrong. A for effort though! Even if there is no A in effort.... But the spiral does drill deeper.")
+            turn_count += 1
     else:
         print("How did you possibly get here? Well if this somehow happened, then you deserve what happens next")
         break
+    if turn_count == 5:
+        print("A man in a suit walks past you. You play dead out of fear for who this man is. He moves calmy, as an intercom rings out. The intercom rings out, with your boss saying \"All employees, reinforcements are coming in apporximately 957 seconds and the attack will be put to an end.\" You feel that ")
 
 if live == False:
     print("The Spiral has drilled deep enough inside you where any other move would result in your death. You're forced to just lay on a wall, taking slow breaths to not cause it to go deeper. Maybe in the next life you got it? Who really knows.")
