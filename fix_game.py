@@ -42,12 +42,12 @@ for score in scores:
     #Logic error, Due to total = 0 being placed here the total kept resetting so it would always end up as the last score and mess up the average
     total = total + score
 
-average = total / rounds
+average = round(total / rounds, 3)
 print("Your average guesses per round was " + str(average))
 
 best_round = scores[0]
-for i in range(1, rounds ):
-    if scores[i] <= best_round: #Logic error, 
+for i in range(1, rounds ): #Logic error, the for loop never considered the last round so if the last round was the lowest then it would not be considered
+    if scores[i] <= best_round: 
         best_round = scores[i] 
 
 print(f"Your best round took only {best_round} guesses!")
