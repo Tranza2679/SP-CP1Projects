@@ -4,7 +4,7 @@ sentence = "The quick brown fox jumps over the lazy dog"
 
 
 word = input("What word do you want?: " ).strip().lower()
-new_word = input("What word should be in the sentence: ").strip().lowe()
+new_word = input("What word should be in the sentence: ").strip().lower()
 
 location = sentence.find(word)
 new_sentence = sentence.replace(word,new_word)
