@@ -1,5 +1,6 @@
 #Santiago Pineda, Password strength checker
 program_continue = True
+points = 0
 
 
 special_characters = ["!", "@", "(", ")", "#", "$", "%", "&", "^", "*", "_", "-", "+", "=", "[", "]", "{", "}", "|", "?", "<", ">"] #(!@#$%^&*()_+-=[]{}|;:,.<>?
@@ -11,11 +12,20 @@ def checker_for_special(check):
     else:
         pass
 
+
+
+def pointIncreasor(first_time):
+    global points
+    if first_time:
+        points = 0
+    else:
+        points += 1
+        return points
+
 print("Welcome to password strength checker! This program checks if a password is actually strong or weak, or maybe even just okay.")
 print(f"Note that if you do include special characters in your password(Which you should...), then this is the special characters you CAN use: \n{special_characters}")
 
 while program_continue == True:
-    points = 0
     while True:
         try:
             password = str(input("What is the password you want to check? ")).strip()
@@ -28,26 +38,20 @@ while program_continue == True:
             break
     separated_password = password.split()
     fixed_password = "".join(separated_password)
-    list_password = fixed_password.split()
-    password_length = len(list_password)
+    list_password = list(fixed_password)
+    password_length = len(fixed_password)
     checker_for_special(list_password)
     if True:
-        points =+ 1
-    if len(fixed_password) > 8:
-        points =+ 1
-    for i in range(1, password_length):
-        print("Yo free lunacy")
+        print("chud")
+        pointIncreasor(False)
     
-    
-    
-    
+    if password_length >= 8:
+        print("poop")
+        pointIncreasor(False)
 
-
-    """"first_name = input("What is your first name: ").strip().title()
-last_name = input("What is your last name: ").strip().title()
-first_seperated_name = first_name.split()
-first_fixed = "".join(first_seperated_name)
-last_seperated = last_name.split()
-last_fixed = "".join(last_seperated)
-full_name = first_fixed.title() + " " + last_fixed.title()
-print("Hello " +full_name.title())"""
+    
+    
+    print(f"{points}")
+    
+    
+    
