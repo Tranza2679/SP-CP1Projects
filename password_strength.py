@@ -10,10 +10,12 @@ special_characters = ["!", "@", "(", ")", "#", "$", "%", "&", "^", "*", "_", "-"
 
 def checker_for_special(checker,checks):
     global special_characters_yes
-    if checker in checks:
-        special_characters_yes = True
-    else: 
-        pass 
+    for check in checks:
+        if checker in checks:
+            special_characters_yes = True
+            break
+        else: 
+            pass 
 
 
 
@@ -45,26 +47,37 @@ while program_continue == True:
     password_length = len(fixed_password)
     checker_for_upper = False
     checker_for_lower = False
-    Checker_for_number = False
-    print(checker_for_special(special_characters,list_password))
+    checker_for_number = False
+    for char in list_password:
+        if char in special_characters:
+            special_characters_yes = True
+        else:
+            pass
+    for letter in list_password:
+        if letter.isupper():
+            checker_for_upper = True
+        elif letter.islower():
+            checker_for_lower = True
+        elif letter.isnumeric():
+            checker_for_number = True
+        else:
+            pass
+
     
-    if True:
+    
+    if special_characters_yes==True:
         print("chud")
         pointIncreasor(False)
-    
     if password_length >= 8:
         print("poop")
         pointIncreasor(False)
-    checker_for_upper = True if list_password.isupper() else False
     if checker_for_upper == True:
         print("Dih")
         pointIncreasor(False)
-    checker_for_lower = True if fixed_password.islower() else False
     if checker_for_lower == True:
         print("Bleh")
         pointIncreasor(False)
-    Checker_for_number = True if fixed_password.isnumeric() else False
-    if Checker_for_number == True:
+    if checker_for_number == True:
         print("oops")
         pointIncreasor(False)
 
@@ -77,16 +90,12 @@ while program_continue == True:
     while True:
         try:
             continue_or_not = str(input("Will you continue? Yes or No")).strip().title()
-            if continue_or_not != "Yes" or continue_or_not != "No":
+            if continue_or_not != "Yes" and continue_or_not != "No":
                 print("You can't do that, please write it again")
                 pass
         except:
             print("You can't write that!")
-
-
-    
-    
-    print(f"{points}")
-    
-    
+        else: 
+            break
+    if continue_or_not == ""
     
