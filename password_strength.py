@@ -66,16 +66,30 @@ while program_continue == True:
     
     
     if special_characters_yes==True:
+        print("There are special characters in your password!")
         pointIncreasor(False)
+    else:
+        print("There is not a special character in your password:(")
     if password_length >= 8:
+        print("There is at least 8 characters in your password!")
         pointIncreasor(False)
+    else: 
+        print("There is not at least 8 characters in your password:(")
     if checker_for_upper == True:
+        print("There is at least 1 uppercase letter in your password!")
         pointIncreasor(False)
+    else:
+        print("There is no uppercase letters in your password:(")
     if checker_for_lower == True:
         pointIncreasor(False)
+        print("There is at least 1 lowercase letter in your password!")
+    else:
+        print("There is no lowercase letter in yoyr password(somehow):(")
     if checker_for_number == True:
-    
+        print("There is at least 1 number in your password!")
         pointIncreasor(False)
+    else:
+        print("There is no number in your password:(")
 
     if points == 5 or points == 4:
         print(f"Your password: {fixed_password}, is strong! Good job!")
