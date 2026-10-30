@@ -66,19 +66,15 @@ while program_continue == True:
     
     
     if special_characters_yes==True:
-        print("chud")
         pointIncreasor(False)
     if password_length >= 8:
-        print("poop")
         pointIncreasor(False)
     if checker_for_upper == True:
-        print("Dih")
         pointIncreasor(False)
     if checker_for_lower == True:
-        print("Bleh")
         pointIncreasor(False)
     if checker_for_number == True:
-        print("oops")
+    
         pointIncreasor(False)
 
     if points == 5 or points == 4:
@@ -89,13 +85,16 @@ while program_continue == True:
         print(f"Your password: {fixed_password}, is weak. Please consider adding some changes to it")
     while True:
         try:
-            continue_or_not = str(input("Will you continue? Yes or No")).strip().title()
+            continue_or_not = str(input("Will you continue? Yes or No ")).strip().title()
             if continue_or_not != "Yes" and continue_or_not != "No":
                 print("You can't do that, please write it again")
-                pass
+                continue
         except:
             print("You can't write that!")
         else: 
             break
-    if continue_or_not == ""
+    if continue_or_not == "Yes":
+        pointIncreasor(True)
+    else:
+        break
     
