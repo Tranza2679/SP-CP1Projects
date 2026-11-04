@@ -1,4 +1,7 @@
 #Santiago Pineda, Caesar cipher assignment 
+def encoder(word):
+    return word
+    
 
 print("Hello user! Welcome to Caesar Cipher! With this program you can encode or decode!")
 while True:
@@ -21,6 +24,7 @@ if choice == 1:
             print("You can't shift by that number:(")
         else:
             break
+    encoder(word_to_encode)
     print(word_to_encode)
 
     
