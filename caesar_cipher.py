@@ -1,7 +1,16 @@
 #Santiago Pineda, Caesar cipher assignment 
-def encoder(word):
-    return word
-    
+
+def encoder(words, shift):
+    global number
+    global new_word
+    for i in range(0, len(words)):
+        for word in words: 
+            number = ord(word)
+            number += shift
+            word = chr(number)
+            new_word = words.replace(word, words)
+    return words
+
 
 print("Hello user! Welcome to Caesar Cipher! With this program you can encode or decode!")
 while True:
@@ -24,8 +33,8 @@ if choice == 1:
             print("You can't shift by that number:(")
         else:
             break
-    encoder(word_to_encode)
-    print(word_to_encode)
+    encoded_word = encoder(word_to_encode, number_to_shift)
+    print(encoded_word)
 
     
 
