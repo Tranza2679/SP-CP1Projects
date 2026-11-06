@@ -43,22 +43,6 @@ while True:
                 break
         encoded_word = encoder(word_to_encode, number_to_shift)
         print(f"Your encoded word is: {encoded_word}" )
-        while True:
-            try:
-                continue_or_not = str(input("Will you continue using this program: yes or no "))
-                if continue_or_not != "yes" or continue_or_not != "no":
-                    print("Please write Yes or No...")
-                    continue
-            except:
-                print("Please try again")
-            else:
-                break
-        if continue_or_not == "Yes":
-            pass
-        else:
-            break
-
-    
 
     elif choice == 2:
         word_to_decode = str(input("What word will you decode? ")).strip()
@@ -71,17 +55,4 @@ while True:
                 break
         decoded_word = decoder(word_to_decode,number_to_shift)
         print(f"Your decoded word is: {decoded_word}")
-        while True:
-            try:
-                continue_or_not = str(input("Will you continue using this program: yes or no? "))
-                if continue_or_not != "yes" or continue_or_not != "no":
-                    print("Please write Yes or No...")
-                    continue
-            except:
-                print("Please try again")
-            else:
-                break
-        if continue_or_not == "Yes":
-            pass
-        else:
-            break
+       
