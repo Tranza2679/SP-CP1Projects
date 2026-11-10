@@ -1,44 +1,64 @@
 #Santiago Pineda, Turtle Race
 import turtle as t
 import random 
-import time
 round = 0 
+program_end = False
+def setUp(turtle):
+    global color
+    turtle.penup()
+    turtle.shape('turtle')
+    color = random.randint(0,5)
+    if color == 1:
+        turtle.color('red')
+    elif color == 2:
+        turtle.color('gold')
+    elif color == 3:
+        turtle.color('green')
+    elif color == 4:
+        turtle.color('blue')
+    else:
+        turtle.color('darkviolet')
+    turtle.goto(-500, random.randint(-500,500))
+    turtle.pendown()
 def moveTurtle(turtle):
     turtle.forward(random.randint(0,300))
+def goal_checker(check):
+    global program_end
+    if check.xcor >=500:
+        program_end = True
+        return program_end
+    else:
+        pass
+
 turtle_one = t.Turtle()
 turtle_two = t.Turtle()
 turtle_three = t.Turtle()
 turtle_four = t.Turtle()
 turtle_five = t.Turtle()
 goal = t.Turtle()
-turtle_one.color("green")
-turtle_one.shape('turtle')
-turtle_two.color("red")
-turtle_two.shape('turtle')
-turtle_three.color("gold")
-turtle_three.shape('turtle')
-turtle_four.color("purple")
-turtle_four.shape('turtle')
-turtle_five.color("blue")
-turtle_five.shape('turtle')
 goal.color("black")
 goal.penup()
-goal.goto(1000,1000)
-print(turtle_one.pos())
-turtle_two.penup()
-turtle_two.goto(0.0, 100)
-turtle_three.penup()
-turtle_three.goto(0.0, -50)
-turtle_four.penup()
-turtle_four.goto(0.0, 50.0)
-turtle_five.penup()
-turtle_five.goto(0, -100)
-while True:
+goal.goto(500,500)
+goal.pendown()
+goal.goto(500,-500)
+setUp(turtle_one)
+setUp(turtle_two)
+setUp(turtle_three)
+setUp(turtle_four)
+setUp(turtle_five)
+
+
+while program_end == False:
     moveTurtle(turtle_one)
+    
     moveTurtle(turtle_two)
+    
     moveTurtle(turtle_three)
+ 
     moveTurtle(turtle_four)
+
     moveTurtle(turtle_five)
+
     round =+ 1
 
 t.exitonclick()
