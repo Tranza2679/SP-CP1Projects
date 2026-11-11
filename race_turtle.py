@@ -3,10 +3,10 @@ import turtle as t
 import random 
 round = 0 
 program_end = False
-def setUp(turtle):
+def setUp(turtle, distance):
     turtle.penup()
     turtle.shape('turtle')
-    color = random.randint(0,5)
+    color = random.randint(1,5)
     if color == 1:
         turtle.color('red')
     elif color == 2:
@@ -17,12 +17,13 @@ def setUp(turtle):
         turtle.color('blue')
     else:
         turtle.color('darkviolet')
-    turtle.goto(-500, random.randint(-500,500))
+    turtle.goto(-350, distance)
     turtle.pendown()
 def moveTurtle(turtle):
     turtle.forward(random.randint(0,300))
 def goal_checker(check):
-    return check.xcor() >= 500
+    return check.xcor()>500
+
 
 turtle_one = t.Turtle()
 turtle_two = t.Turtle()
@@ -36,11 +37,11 @@ goal.penup()
 goal.goto(500,500)
 goal.pendown()
 goal.goto(500,-500)
-setUp(turtle_one)
-setUp(turtle_two)
-setUp(turtle_three)
-setUp(turtle_four)
-setUp(turtle_five)
+setUp(turtle_one,200)
+setUp(turtle_two, 100)
+setUp(turtle_three, 0)
+setUp(turtle_four, -100)
+setUp(turtle_five, -200)
 
 
 while True:
@@ -55,11 +56,19 @@ while True:
         break
 
     moveTurtle(turtle_three)
-    goal_checker(turtle_three)
+    if goal_checker(turtle_three):
+        print("Turtle three won!")
+        break
+
     moveTurtle(turtle_four)
-    goal_checker(turtle_four)
+    if goal_checker(turtle_four):
+        print("Turtle four won!")
+        break
+
     moveTurtle(turtle_five)
-    goal_checker(turtle_five)
+    if goal_checker(turtle_five):
+        print('Turtle five won!')
+        break
 
     round += 1
 
