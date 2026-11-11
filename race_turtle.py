@@ -4,7 +4,6 @@ import random
 round = 0 
 program_end = False
 def setUp(turtle):
-    global color
     turtle.penup()
     turtle.shape('turtle')
     color = random.randint(0,5)
@@ -23,16 +22,14 @@ def setUp(turtle):
 def moveTurtle(turtle):
     turtle.forward(random.randint(0,300))
 def goal_checker(check):
-    if check.xcor() >=500:
-        t.exitonclick()
-    else:
-        pass
+    return check.xcor() >= 500
 
 turtle_one = t.Turtle()
 turtle_two = t.Turtle()
 turtle_three = t.Turtle()
 turtle_four = t.Turtle()
 turtle_five = t.Turtle()
+
 goal = t.Turtle()
 goal.color("black")
 goal.penup()
@@ -46,12 +43,16 @@ setUp(turtle_four)
 setUp(turtle_five)
 
 
-while program_end == False:
+while True:
     moveTurtle(turtle_one)
-    goal_checker(turtle_one)
+    if goal_checker(turtle_one):
+        print("Turtle one won!")
+        break
     
     moveTurtle(turtle_two)
-    goal_checker(turtle_two)
+    if goal_checker(turtle_two):
+        print("Turtle two won!")
+        break
 
     moveTurtle(turtle_three)
     goal_checker(turtle_three)
@@ -60,6 +61,6 @@ while program_end == False:
     moveTurtle(turtle_five)
     goal_checker(turtle_five)
 
-    round =+ 1
+    round += 1
 
 print(f"It took {round} rounds")
