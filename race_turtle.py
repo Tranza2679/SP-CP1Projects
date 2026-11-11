@@ -23,10 +23,8 @@ def setUp(turtle):
 def moveTurtle(turtle):
     turtle.forward(random.randint(0,300))
 def goal_checker(check):
-    global program_end
-    if check.xcor >=500:
-        program_end = True
-        return program_end
+    if check.xcor() >=500:
+        t.exitonclick()
     else:
         pass
 
@@ -50,15 +48,18 @@ setUp(turtle_five)
 
 while program_end == False:
     moveTurtle(turtle_one)
+    goal_checker(turtle_one)
     
     moveTurtle(turtle_two)
-    
-    moveTurtle(turtle_three)
- 
-    moveTurtle(turtle_four)
+    goal_checker(turtle_two)
 
+    moveTurtle(turtle_three)
+    goal_checker(turtle_three)
+    moveTurtle(turtle_four)
+    goal_checker(turtle_four)
     moveTurtle(turtle_five)
+    goal_checker(turtle_five)
 
     round =+ 1
 
-t.exitonclick()
+print(f"It took {round} rounds")
