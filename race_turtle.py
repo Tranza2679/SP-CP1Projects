@@ -3,11 +3,10 @@ import turtle as t
 import random 
 round = 0 
 program_end = False
-def setUp(turtle):
-    global color
+def setUp(turtle, distance):
     turtle.penup()
     turtle.shape('turtle')
-    color = random.randint(0,5)
+    color = random.randint(1,5)
     if color == 1:
         turtle.color('red')
     elif color == 2:
@@ -18,48 +17,59 @@ def setUp(turtle):
         turtle.color('blue')
     else:
         turtle.color('darkviolet')
-    turtle.goto(-500, random.randint(-500,500))
+    turtle.goto(-350, distance)
     turtle.pendown()
 def moveTurtle(turtle):
     turtle.forward(random.randint(0,300))
 def goal_checker(check):
-    if check.xcor() >=500:
-        t.exitonclick()
-    else:
-        pass
+    return check.xcor()>500
+
 
 turtle_one = t.Turtle()
 turtle_two = t.Turtle()
 turtle_three = t.Turtle()
 turtle_four = t.Turtle()
 turtle_five = t.Turtle()
+
 goal = t.Turtle()
 goal.color("black")
 goal.penup()
 goal.goto(500,500)
 goal.pendown()
 goal.goto(500,-500)
-setUp(turtle_one)
-setUp(turtle_two)
-setUp(turtle_three)
-setUp(turtle_four)
-setUp(turtle_five)
+setUp(turtle_one,200)
+setUp(turtle_two, 100)
+setUp(turtle_three, 0)
+setUp(turtle_four, -100)
+setUp(turtle_five, -200)
 
 
-while program_end == False:
+while True:
     moveTurtle(turtle_one)
-    goal_checker(turtle_one)
+    if goal_checker(turtle_one):
+        print("Turtle one won!")
+        break
     
     moveTurtle(turtle_two)
-    goal_checker(turtle_two)
+    if goal_checker(turtle_two):
+        print("Turtle two won!")
+        break
 
     moveTurtle(turtle_three)
-    goal_checker(turtle_three)
-    moveTurtle(turtle_four)
-    goal_checker(turtle_four)
-    moveTurtle(turtle_five)
-    goal_checker(turtle_five)
+    if goal_checker(turtle_three):
+        print("Turtle three won!")
+        break
 
-    round =+ 1
+    moveTurtle(turtle_four)
+    if goal_checker(turtle_four):
+        print("Turtle four won!")
+        break
+
+    moveTurtle(turtle_five)
+    if goal_checker(turtle_five):
+        print('Turtle five won!')
+        break
+
+    round += 1
 
 print(f"It took {round} rounds")
