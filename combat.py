@@ -6,7 +6,8 @@ enemy_guard = False
 defense = False 
 bad_attack = False
 bad_enemy_attack = False
-def userCombat(stat_one, max,  stat_two, stat_three, special_ability, enemy_health, enemy_defense, user_count):
+special_counter = 0
+def userCombat(stat_one, max,  stat_two, special_ability, enemy_health, enemy_defense, user_count):
     global attack
     global negative_effect
     global ammo
@@ -26,12 +27,19 @@ def userCombat(stat_one, max,  stat_two, stat_three, special_ability, enemy_heal
             break
     if action == 1:
         print("You use your turn to attack the enemy.")
-        attack = (random.randint(1, 10) + stat_two)
+        
         if enemy_guard == True:
-            enemy_health -= (attack - (enemy_defense * 2))
+            attack = (random.randint(1, 10) + stat_two - (enemy_defense * 2))
             enemy_guard = False
         else:
-            enemy_health -= (attack - enemy_defense)
+            attack = (random.randint(1, 10) + stat_two - enemy_defense)
+
+        if attack <= 0:
+            print("The attack somehow deals 0 damage...")
+        else:
+            enemy_health -= attack
+            print(f"The enemy currently has {enemy_health} health")
+
         if special_ability == 1:
             print("You hit the enemy with a burning punch!")
             negative_effect += random.randint(1,3)
@@ -108,12 +116,13 @@ def userCombat(stat_one, max,  stat_two, stat_three, special_ability, enemy_heal
         heal -= 7
         print(f"Your heal will now only recover {heal} amount...")
     
-def enemyCombat( enemy_stat_one, enemy_health , enemy_defense, user_defense, user_health, enemy_count, enemy_max, user_attack ):
+def enemyCombat( enemy_stat_one, enemy_health, user_defense, user_health, enemy_count, enemy_max, user_attack ):
     global enemy_guard 
     global defense
     global enemy_heal
     global change
     global bad_enemy_attack
+    global special_counter
     action = random.randint(1,4)
     if action == 1:
         print("The Rat hits you with a bat!")
@@ -127,13 +136,20 @@ def enemyCombat( enemy_stat_one, enemy_health , enemy_defense, user_defense, use
             print("Somehow it deals 0 damage")
             bad_enemy_attack = True
         else:
-            pass
+            user_health -= attack
 
         if counter == True and bad_enemy_attack == False:
-            user_health -= (attack)
-            print("As you get hit, you counter back")
-            attack = (random.randint(1, 8) + user_attack)
-            special_counter += 1
+            if special_counter >= 3:
+                print("As you get hit, you use your special counter and attack.")
+                print("You tackle the enemy and hit them with multiple blows!")
+                attack = (random.randint(10,25) + user_attack)
+                enemy_health -= attack
+                special_counter = 0
+            else:
+                print("As you get hit, you counter back")
+                attack = (random.randint(1, 6) + user_attack)
+                enemy_health -= attack
+                special_counter += 1
         elif bad_enemy_attack == False:
             user_health -= (attack)
         else:
@@ -174,10 +190,10 @@ print("Anyways basic mechanics explanation! \n 1 will cause you to attack with a
 if faction == 1:
     print("You are a fixer of the Liu Association! Your stats are: \n Health: 55 \n defense: 4 \n attack: 5")
     print("Do note all of your attacks inflict burn and cause enemies to take damage after their turn!")
-    health = 50
+    health = 55
     defense = 4
     attack = 5
-    max_health = 50
+    max_health = 55
     health_enemy = 70
     defense_enemy = 4
     attack_enemy = 6
