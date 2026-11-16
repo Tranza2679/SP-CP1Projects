@@ -7,6 +7,8 @@ defense = False
 bad_attack = False
 bad_enemy_attack = False
 special_counter = 0
+counter = False
+negative_effect = 0
 def userCombat(stat_one, max,  stat_two, special_ability, enemy_health, enemy_defense, user_count):
     global attack
     global negative_effect
@@ -195,18 +197,31 @@ if faction == 1:
     attack = 5
     max_health = 55
     health_enemy = 70
+    max_enemy = 70
     defense_enemy = 4
     attack_enemy = 6
     special_count = 0
     enemy_special_count = 0
     enconter_start = random.randint(1,2)
     if enconter_start == 1:
-        print("As you are walking around, you find an unspecting Rat that has been messing with  and ambush them! You start first")
+        print("As you are walking around, you find an unspecting Rat that has been messing with people around and ambush them! You start first!")
         while health >= 0 or health_enemy >= 0:
-            userCombat()
+            userCombat(health, max_health, attack, faction, health_enemy, defense, special_count)
             special_count += 1
-            enemyCombat()
+            enemyCombat(attack_enemy, health_enemy, defense, health, enemy_special_count, max_enemy, attack)
             enemy_special_count += 1
+    else:
+        print("As you are walking around, you get ambushed by a Rat! The enemy starts first.")
+        while health >= 0 or health_enemy >= 0:
+            enemyCombat(attack_enemy, health_enemy, defense, health, enemy_special_count, max_enemy, attack)
+            enemy_special_count += 1
+            userCombat(health, max_health, attack, faction, health_enemy, defense, special_count)
+            special_count += 1
+
+    if health <= 0:
+        print("You lose:/ ")
+    elif health_enemy <= 0:
+        print('You win!!!')
 elif faction == 2:
     print("You are a member of The Middle! Your stats are: \n Health: 60 \n defense: 6 \n attack: 4 ")
     print("Do note that after using your counter or getting hit three times. your counter is replaced by your special skill!")
@@ -214,12 +229,95 @@ elif faction == 2:
     defense = 6
     attack = 4
     max_health = 60
+    health_enemy = 70
+    max_enemy = 70
+    defense_enemy = 4
+    attack_enemy = 6
+    special_count = 0
+    enemy_special_count = 0
+    enconter_start = random.randint(1,2)
+    if enconter_start == 1:
+        print("As you are walking around, you find an unspecting Rat that has been messing with people around and ambush them! You start first!")
+        while health >= 0 or health_enemy >= 0:
+            userCombat(health, max_health, attack, faction, health_enemy, defense, special_count)
+            special_count += 1
+            enemyCombat(attack_enemy, health_enemy, defense, health, enemy_special_count, max_enemy, attack)
+            enemy_special_count += 1
+    else:
+        print("As you are walking around, you get ambushed by a Rat! The enemy starts first.")
+        while health >= 0 or health_enemy >= 0:
+            enemyCombat(attack_enemy, health_enemy, defense, health, enemy_special_count, max_enemy, attack)
+            enemy_special_count += 1
+            userCombat(health, max_health, attack, faction, health_enemy, defense, special_count)
+            special_count += 1
+    
+        if health <= 0:
+            print("You lose:/ ")
+        elif health_enemy <= 0:
+            print('You win!!!')
 elif faction == 3:
     print("You are a member of The Thumb! Your stats are: \n Health: 50 \n defense: 2 \n attack: 7")
     print("Do note that after attacking two times, you'll be able to do your special skill immediately!")
     health = 50
     defense = 2
     attack =7
+    max_health = 50
+    health_enemy = 70
+    max_enemy = 70
+    defense_enemy = 4
+    attack_enemy = 6
+    special_count = 0
+    enemy_special_count = 0
+    enconter_start = random.randint(1,2)
+    if enconter_start == 1:
+        print("As you are walking around, you find an unspecting Rat that has been messing with people around and ambush them! You start first!")
+        while health >= 0 or health_enemy >= 0:
+            userCombat(health, max_health, attack, faction, health_enemy, defense, special_count)
+            special_count += 1
+            enemyCombat(attack_enemy, health_enemy, defense, health, enemy_special_count, max_enemy, attack)
+            enemy_special_count += 1
+    else:
+        print("As you are walking around, you get ambushed by a Rat! The enemy starts first.")
+        while health >= 0 or health_enemy >= 0:
+            enemyCombat(attack_enemy, health_enemy, defense, health, enemy_special_count, max_enemy, attack)
+            enemy_special_count += 1
+            userCombat(health, max_health, attack, faction, health_enemy, defense, special_count)
+            special_count += 1
+    
+        if health <= 0:
+            print("You lose:/ ")
+        elif health_enemy <= 0:
+            print('You win!!!')
 elif faction == 4:
-    print("You are a fixer of the Shi Association! Your stats are: \n Health: 70 \n defense: 1 \n attack: 4")
+    print("You are a fixer of the Shi Association! Your stats are: \n Health: 70 \n defense: 1 \n attack: 6")
     print("Do note you lose some health every time you attack... but get stronger at low health")
+    health = 70
+    defense = 1
+    attack = 6
+    max_health = 70
+    health_enemy = 70
+    max_enemy = 70
+    defense_enemy = 4
+    attack_enemy = 6
+    special_count = 0
+    enemy_special_count = 0
+    enconter_start = random.randint(1,2)
+    if enconter_start == 1:
+        print("As you are walking around, you find an unspecting Rat that has been messing with people around and ambush them! You start first!")
+        while health >= 0 or health_enemy >= 0:
+            userCombat(health, max_health, attack, faction, health_enemy, defense, special_count)
+            special_count += 1
+            enemyCombat(attack_enemy, health_enemy, defense, health, enemy_special_count, max_enemy, attack)
+            enemy_special_count += 1
+    else:
+        print("As you are walking around, you get ambushed by a Rat! The enemy starts first.")
+        while health >= 0 or health_enemy >= 0:
+            enemyCombat(attack_enemy, health_enemy, defense, health, enemy_special_count, max_enemy, attack)
+            enemy_special_count += 1
+            userCombat(health, max_health, attack, faction, health_enemy, defense, special_count)
+            special_count += 1
+    
+    if health <= 0:
+        print("You lose:/ ")
+    elif health_enemy <= 0:
+        print('You win!!!')
