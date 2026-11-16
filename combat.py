@@ -4,6 +4,8 @@ def user_combat(stat_one, max,  stat_two, stat_three, special_ability, enemy_hea
     global attack
     global negative_effect
     global ammo
+    global counter 
+    global defense
     while True:
         try:
             action = int(input("What will you perform? \n 1. attack \n 2. special skill \n 3. defense \n 4. heal"))
@@ -52,6 +54,31 @@ def user_combat(stat_one, max,  stat_two, stat_three, special_ability, enemy_hea
                 attack = (random.randint(10,25) + stat_two)
             elif special_ability == 3:
                 print("You fire all your ammo into the enemy! ")
+                attack = (random.randint(15,25) + stat_two)
+            elif special_ability == 4:
+                print("You harness all your strength to do a powerful slash!")
+                attack = random.randint(1,4)
+                if attack == 4:
+                    print("You hit the lucky four and get + 45 to the damage")
+                    attack += 45
+                else:
+                    print("Sadly you fail so your attack doesn't deal too much damage...")
+            else:
+                print("You are unable to use your special skill...")
+                while True:
+                    try:
+                        action = int(input("What will you perform? \n 1. attack \n 2. special skill \n 3. defense \n 4. heal"))
+                        if action > 4:
+                            print("You really can't do that...")
+                    except: 
+                        print("Please write it as the number associated with it!")
+                    else:
+                        break
+    elif action == 3:
+        print("You block! the next hit you take will take reduced damage by your defense X 3")
+        if special_ability == 2:
+            counter = True
+
 
 
 
