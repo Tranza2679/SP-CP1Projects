@@ -108,7 +108,7 @@ def userCombat(stat_one, max,  stat_two, stat_three, special_ability, enemy_heal
         heal -= 7
         print(f"Your heal will now only recover {heal} amount...")
     
-def enemyCombat(enemy_stat_one, enemy_health , enemy_defense user_defense, user_health, enemy_count, enemy_max, user_attack):
+def enemyCombat( enemy_stat_one, enemy_health , enemy_defense, user_defense, user_health, enemy_count, enemy_max, user_attack ):
     global enemy_guard 
     global defense
     global enemy_heal
@@ -122,6 +122,7 @@ def enemyCombat(enemy_stat_one, enemy_health , enemy_defense user_defense, user_
             defense = False
         else:
             attack = (random.randint(1, 15) + enemy_stat_one - user_defense)
+        
         if attack < 0:
             print("Somehow it deals 0 damage")
             bad_enemy_attack = True
@@ -129,9 +130,10 @@ def enemyCombat(enemy_stat_one, enemy_health , enemy_defense user_defense, user_
             pass
 
         if counter == True and bad_enemy_attack == False:
+            user_health -= (attack)
             print("As you get hit, you counter back")
-            attack = (random.randint(1, 10) + user_attack - enemy_defense)
-
+            attack = (random.randint(1, 8) + user_attack)
+            special_counter += 1
         elif bad_enemy_attack == False:
             user_health -= (attack)
         else:
