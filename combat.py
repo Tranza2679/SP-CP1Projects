@@ -2,6 +2,10 @@
 import random
 heal = 30
 enemy_heal = 30
+enemy_guard = False
+defense = False 
+bad_attack = False
+bad_enemy_attack = False
 def userCombat(stat_one, max,  stat_two, stat_three, special_ability, enemy_health, enemy_defense, user_count):
     global attack
     global negative_effect
@@ -10,6 +14,7 @@ def userCombat(stat_one, max,  stat_two, stat_three, special_ability, enemy_heal
     global defense
     global heal
     global change
+    global enemy_guard
     while True:
         try:
             action = int(input("What will you perform? \n 1. attack \n 2. special skill \n 3. defense \n 4. heal"))
@@ -22,7 +27,11 @@ def userCombat(stat_one, max,  stat_two, stat_three, special_ability, enemy_heal
     if action == 1:
         print("You use your turn to attack the enemy.")
         attack = (random.randint(1, 10) + stat_two)
-        enemy_health -= (attack - enemy_defense)
+        if enemy_guard == True:
+            enemy_health -= (attack - (enemy_defense * 2))
+            enemy_guard = False
+        else:
+            enemy_health -= (attack - enemy_defense)
         if special_ability == 1:
             print("You hit the enemy with a burning punch!")
             negative_effect += random.randint(1,3)
@@ -40,7 +49,7 @@ def userCombat(stat_one, max,  stat_two, stat_three, special_ability, enemy_heal
             print("You slash at the enemy with a katana! but injure yourself slightly in the process...")
             if stat_one <= 30:
                 print("Well you only slighly scratch yourself somehow... so seems you don't take any damage. You also do extra damage out of despiration")
-                attack = stat_two
+                attack += stat_two
                 enemy_health -= (attack - enemy_defense)
             else:
                 stat_one -= random.randint(1,3)
@@ -87,12 +96,9 @@ def userCombat(stat_one, max,  stat_two, stat_three, special_ability, enemy_heal
                         break
     elif action == 3:
         print("You block! the next hit you take will take reduced damage by your defense X 2")
-        defense = stat_three * 2
+        defense = True
         if special_ability == 2:
             counter = True
-        elif special_ability == 4:
-            if stat_one < 30:
-                defense = ((stat_three + 3) * 2)
     elif action == 4:
         print("You use your turn to recover some health!")
         stat_two += heal
@@ -102,13 +108,35 @@ def userCombat(stat_one, max,  stat_two, stat_three, special_ability, enemy_heal
         heal -= 7
         print(f"Your heal will now only recover {heal} amount...")
     
-def enemyCombat(enemy_stat_one,  enemy_stat_two, user_defense, user_health, enemy_count):
-    global enemy_defense 
+def enemyCombat(enemy_stat_one, enemy_health , enemy_defense user_defense, user_health, enemy_count, enemy_max, user_attack):
+    global enemy_guard 
+    global defense
+    global enemy_heal
+    global change
+    global bad_enemy_attack
     action = random.randint(1,4)
     if action == 1:
         print("The Rat hits you with a bat!")
-        attack = (random.randint(1, 15) + enemy_stat_one)
-        user_health -= (attack - user_defense)
+        if defense == True:
+            attack =(random.randint(1, 15) + enemy_stat_one - (user_defense * 2))
+            defense = False
+        else:
+            attack = (random.randint(1, 15) + enemy_stat_one - user_defense)
+        if attack < 0:
+            print("Somehow it deals 0 damage")
+            bad_enemy_attack = True
+        else:
+            pass
+
+        if counter == True and bad_enemy_attack == False:
+            print("As you get hit, you counter back")
+            attack = (random.randint(1, 10) + user_attack - enemy_defense)
+
+        elif bad_enemy_attack == False:
+            user_health -= (attack)
+        else:
+            bad_enemy_attack == False
+            
     elif action == 2:
         if enemy_count == 5:
             print("The Rat does their special attack and hits you with a strong slam of their bat!")
@@ -118,13 +146,15 @@ def enemyCombat(enemy_stat_one,  enemy_stat_two, user_defense, user_health, enem
             action = random.randint(1,4)
     elif action == 3:
         print("The Rat takes a guarding stance, they take their defense X 2 less damage for the next attack")
-        enemy_defense = enemy_stat_two * 2 
+        enemy_guard = True 
     elif action == 4: 
         print("The Rat heals their wound")
-
-
-
-
+        enemy_health += enemy_heal
+        if enemy_health > enemy_max:
+            change = enemy_health - enemy_max
+            enemy_health -= change
+        enemy_heal -= 7
+        print(f'The enemy will now only recover {enemy_heal} amount with their heal.')
 
 print("Welcome to the City! Not so much the greatest place to be, especially since you're in the backstreets... Welp, you got it!")
 user_name = str(input("What is your name:"))
@@ -145,15 +175,27 @@ if faction == 1:
     health = 50
     defense = 4
     attack = 5
+    max_health = 50
+    health_enemy = 70
+    defense_enemy = 4
+    attack_enemy = 6
+    special_count = 0
+    enemy_special_count = 0
     enconter_start = random.randint(1,2)
     if enconter_start == 1:
         print("As you are walking around, you find an unspecting Rat that has been messing with  and ambush them! You start first")
+        while health >= 0 or health_enemy >= 0:
+            userCombat()
+            special_count += 1
+            enemyCombat()
+            enemy_special_count += 1
 elif faction == 2:
     print("You are a member of The Middle! Your stats are: \n Health: 60 \n defense: 6 \n attack: 4 ")
     print("Do note that after using your counter or getting hit three times. your counter is replaced by your special skill!")
     health = 60
     defense = 6
     attack = 4
+    max_health = 60
 elif faction == 3:
     print("You are a member of The Thumb! Your stats are: \n Health: 50 \n defense: 2 \n attack: 7")
     print("Do note that after attacking two times, you'll be able to do your special skill immediately!")
