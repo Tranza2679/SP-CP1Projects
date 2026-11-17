@@ -20,7 +20,8 @@ def userCombat(stat_one, max,  stat_two, special_ability, enemy_health, enemy_de
     global enemy_guard
     while True:
         try:
-            action = int(input("What will you perform? \n 1. attack \n 2. special skill \n 3. defense \n 4. heal"))
+            print("What will you perform? \n 1. attack \n 2. special skill \n 3. defense \n 4. heal")
+            action = int(input(""))
             if action > 4:
                 print("You really can't do that...")
         except: 
@@ -236,11 +237,17 @@ if faction == 1:
             special_count += 1
             enemyCombat(attack_enemy, health_enemy, defense, health, enemy_special_count, max_enemy, attack)
             enemy_special_count += 1
+            if negative_effect > 0:
+                print(f"The enemy takes {negative_effect} damage")
+                health_enemy -= negative_effect
     else:
         print("As you are walking around, you get ambushed by a Rat! The enemy starts first.")
         while health >= 0 or health_enemy >= 0:
             enemyCombat(attack_enemy, health_enemy, defense, health, enemy_special_count, max_enemy, attack)
             enemy_special_count += 1
+            if negative_effect > 0:
+                print(f"The enemy takes {negative_effect} damage")
+                health_enemy -= negative_effect
             userCombat(health, max_health, attack, faction, health_enemy, defense, special_count)
             special_count += 1
 
