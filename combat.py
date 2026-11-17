@@ -14,7 +14,7 @@ ammo = 0
 attack = 0
 change = 0
 
-def userCombat(stat_one, max_val, stat_two, special_ability, enemy_health, enemy_defense, user_count):
+def userCombat(stat_one, max_val, stat_two, special_ability, enemy_health, enemy_defense, user_count): #This function handles the User's turn
     global attack
     global negative_effect
     global ammo
@@ -26,7 +26,7 @@ def userCombat(stat_one, max_val, stat_two, special_ability, enemy_health, enemy
     
     while True:
         try:
-            print("What will you perform?\n1. attack\n2. special skill\n3. defense\n4. heal")
+            print("What will you perform?\n1. attack\n2. special skill\n3. defense\n4. heal") #Gets what action they wish to do
             action = int(input(""))
             if action > 4 or action < 1:
                 print("You really can't do that...")
@@ -35,8 +35,8 @@ def userCombat(stat_one, max_val, stat_two, special_ability, enemy_health, enemy
             print("Please write it as the number associated with it!")
         else:
             break
-            
-    if action == 1:
+                    
+    if action == 1: #Doing a basic attack on the enemy if they are guarding or not, and changes effects or what is printed out based on the faction choosed
         print("You use your turn to attack the enemy.")
         if enemy_guard == True:
             attack = (random.randint(1, 10) + stat_two - (enemy_defense * 2))
@@ -74,7 +74,7 @@ def userCombat(stat_one, max_val, stat_two, special_ability, enemy_health, enemy
             print(f"Your current health is {stat_one}")
             return stat_one, enemy_health 
             
-    elif action == 2:
+    elif action == 2: #The special skill, really just a stronger attack and if it can't be performed then it asks the question again
         if user_count >= 5 or ammo == 2:
             print("You do your special skill!")
             if special_ability == 1:
@@ -104,17 +104,40 @@ def userCombat(stat_one, max_val, stat_two, special_ability, enemy_health, enemy
                     enemy_health -= attack
         else:
             print("You are unable to use your special skill...")
-            
-    elif action == 3:
+            while True:
+                try:
+                    print("What will you perform?\n1. attack\n2. special skill\n3. defense\n4. heal") 
+                    action = int(input(""))
+                    if action > 4 or action < 1:
+                        print("You really can't do that...")
+                        continue
+                except ValueError: 
+                    print("Please write it as the number associated with it!")
+                else:
+                    break
+
+             
+    elif action == 3: #Give your guard and if you're in the middle you get a counter
         print("You block! the next hit you take will take reduced damage by your defense X 2")
         defense = True
         if special_ability == 2:
             counter = True
-            
-    elif action == 4:
+             
+    elif action == 4: #Standard healing, makes sure the heal will actually heal health and can't go over the maximum health. Decreases heal
         print("You use your turn to recover some health!")
         if heal <= 0:
             print("You can't heal an effective amount... maybe do something else?")
+            while True:
+                try:
+                    print("What will you perform?\n1. attack\n2. special skill\n3. defense\n4. heal") 
+                    action = int(input(""))
+                    if action > 4 or action < 1:
+                        print("You really can't do that...")
+                        continue
+                except ValueError: 
+                    print("Please write it as the number associated with it!")
+                else:
+                    break
         else:
             stat_one += heal 
             if stat_one > max_val:
@@ -125,7 +148,7 @@ def userCombat(stat_one, max_val, stat_two, special_ability, enemy_health, enemy
             
     return stat_one, enemy_health
     
-def enemyCombat(enemy_stat_one, enemy_health, user_defense, user_health, enemy_count, enemy_max, user_attack):
+def enemyCombat(enemy_stat_one, enemy_health, user_defense, user_health, enemy_count, enemy_max, user_attack): #This function handles the enemy's turn and what they will randomly do
     global enemy_guard 
     global defense
     global enemy_heal
@@ -136,7 +159,7 @@ def enemyCombat(enemy_stat_one, enemy_health, user_defense, user_health, enemy_c
     
     action = random.randint(1,4)
     if action == 1:
-        print("The Rat hits you with a bat!")
+        print("The Rat hits you with a bat!") #Stanard attack from the enemy and what happens if you're guarding and or countering
         if defense == True:
             attack_dmg = (random.randint(1, 15) + enemy_stat_one - (user_defense * 2))
             defense = False
@@ -151,7 +174,7 @@ def enemyCombat(enemy_stat_one, enemy_health, user_defense, user_health, enemy_c
             print(f"You now only have {user_health} health")
 
         if counter == True and bad_enemy_attack == False:
-            if special_counter >= 3:
+            if special_counter >= 3: #If the counter is used three times then it is then replaced with the special skill instead
                 print("As you get hit, you use your special counter and attack.")
                 print("You tackle the enemy and hit them with multiple blows!")
                 counter_attack = (random.randint(10,25) + user_attack)
@@ -168,22 +191,24 @@ def enemyCombat(enemy_stat_one, enemy_health, user_defense, user_health, enemy_c
             bad_enemy_attack = False
             
     elif action == 2:
-        if enemy_count == 5:
-            print("The Rat does their special attack and hits you with a strong slam of their bat!")
+        if enemy_count >= 5:
+            print("The Rat does their special attack and hits you with a strong slam of their bat!") #Special action of the enemy only activates if the counter is 5
             attack_dmg = (random.randint(10,20) + enemy_stat_one)
             user_health -= attack_dmg
             print(f"You now have {user_health} health")
+            enemy_count = 0
         else:
+            enemy_count += 1
             pass
             
-    elif action == 3:
+    elif action == 3: #The enemy's guard becoming true if used
         print("The Rat takes a guarding stance, they take their defense X 2 less damage for the next attack")
         enemy_guard = True 
         
-    elif action == 4: 
+    elif action == 4:  #The enemy healing, makes sure that the enemy does not overheal and cannot use it if they use the heal too much
         print("The Rat heals their wound")
         if enemy_heal <= 0:
-            print("The enemy realizes that maybe it can't heal so they change their action.")
+            print("The Rat can't heal! ")
         else:
             enemy_health += enemy_heal
             if enemy_health > enemy_max:
@@ -197,7 +222,7 @@ def enemyCombat(enemy_stat_one, enemy_health, user_defense, user_health, enemy_c
 print("Welcome to the City! Not so much the greatest place to be, especially since you're in the backstreets... Welp, you got it!")
 user_name = str(input("What is your name: "))
 
-while True:
+while True: #Gets their faction and makes sure it falls under the options listed 
     try:
         faction = int(input("What will be your faction?\n1. The Liu Association (Specializes in melee combat with fire)\n2. The Middle (Specializes in melee combat and countering after attacks)\n3. The Thumb (Specializes in long range damage with rifles)\n4. The Shi Association (Specializes at dealing more damage at low health)\nPlease write your choice as the number associated with it: "))
         if faction > 4 or faction < 1:
@@ -239,7 +264,7 @@ if faction == 1:
                 health_enemy -= negative_effect
     else:
         print("As you are walking around, you get ambushed by a Rat! The enemy starts first.")
-        while health > 0 and health_enemy > 0:
+        while health > 0 and health_enemy > 0: #Loop for the combat so it contiously happens until someone loses all their health
             health, health_enemy = enemyCombat(attack_enemy, health_enemy, defense, health, enemy_special_count, max_enemy, attack)
             enemy_special_count += 1
             if negative_effect > 0:
