@@ -64,6 +64,15 @@ menu = {
         "Banana Split": 15.00
     }
 }
+drinks = list(menu["Drinks"].keys())
+main_items = list(menu["Main Course"].keys())
+side_items = list(menu["Side Course"].keys())
+dessert = list(menu["Dessert"].keys())
+price_drinks = list(menu["Drinks"].values())
+price_main = list(menu["Main Course"].values())
+price_side = list(menu["Side Course"].values())
+price_dessert = list(menu["Dessert"].values())
+
 def waiter(number_choice):
     global waiter_name
     global waiter_personality
@@ -78,13 +87,67 @@ def waiter(number_choice):
     elif number_choice == 3:
         waiter_name = "Icarus"
         waiter_personality = "Tsundere"
+        return waiter_name, waiter_personality
     elif number_choice == 4:
         waiter_name = "Franco"
+        waiter_personality = "Orderly"
+        return waiter_name, waiter_personality
+    elif number_choice == 5:
+        waiter_name = "Verbena"
+        waiter_personality = "Like Jabber"
+        return waiter_name, waiter_personality
+    
+def showMenu(name,personality):
+    if name == "Antonia" and personality == "Brash":
+        print('"Well bro, I should probably show you the menu! You came here to eat right? How lucky... I wish I could eat right now, but I already used all my food breaks for the day and the cook will propably kill me if I ask for another burger. Anyways here you go!" She says as she hands you the menu and waits paitently for you to order.')
+        print("You read off the items in the menu.")
+        print("You read the drink section... Then the Main Course section... Then the Side Course section... and lastly the desserts...")
+        print("-" * 60)
+        for i in range(0, len(drinks)):
+            print(f"item name: {drinks[i]}. item price: {price_drinks[i]}")
+            time.sleep(0.25)
+        print("-" * 60)
+        for i in range(0,len(main_items)):
+            print(f"item name: {main_items[i]}. Item price: {price_main[i]}")
+            time.sleep(0.25)
+        print("-" * 60)
+        for i in range(0,len(side_items)):
+            print(f"item name: {side_items[i]}. Item price: {price_side[i]}")
+            time.sleep(0.25)
+        print("-" * 60)
+        for i in range(0,len(dessert)):
+            print(f"Item name: {dessert[i]}.  Item price: {price_dessert[i]}")
+            time.sleep(0.25)
+    elif name == "Nero" and personality == "Calm":
+        print('"Well anyways you came here to eat so I won\'t take up much of your time. Just order quick, Don\'t waste my time alright..." She rubs her forehead as she hands you the menu, you swear you could see steam come up from her head.')
+        print("You read off the items in the menu.")
+        print("You read the drink section... Then the Main Course section... Then the Side Course section... and lastly the desserts...")
+        print("-" * 60)
+        for i in range(0, len(drinks)):
+            print(f"item name: {drinks[i]}. item price: {price_drinks[i]}")
+            time.sleep(0.25)
+        print("-" * 60)
+        for i in range(0,len(main_items)):
+            print(f"item name: {main_items[i]}. Item price: {price_main[i]}")
+        print("-" * 60)
+        for i in range(0,len(side_items)):
+            print(f"item name: {side_items[i]}. Item price: {price_side[i]}")
+        print("-" * 60)
+        for i in range(0,len(dessert)):
+            print(f"Item name: {dessert[i]}.  Item price: {price_dessert[i]}")
+    elif name == "Icarus" and waiter_personality == "Tsundere":
+        print('"Here\'s the menu. It\'s sad that I have to be a waiter in a resturant considering the wealth my family holds, and to be placed in the same resturant as my rival Antonia... Just order already!!!!" He yells at you slightly before handing the menu to you, as his foot taps impatiently on the ground as you read it off')
+        
 
 
 print("You enter a newly opened fancy resturant! Or what looks to be a fancy resturant... Anyways you sit down and wait to be greeted by a waiter.")
-time.sleep(random.randint(1,10))
-waiter_pick = random.randint(1,4)
+#time.sleep(random.randint(1,10))
+waiter_pick = random.randint(1,5)
+waiter_name, waiter_personality = waiter(waiter_pick)
 
 
-#include random personalities for the waiters based on ocs:)))
+    
+
+
+
+
