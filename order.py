@@ -282,7 +282,7 @@ waiter_pick = 1
 waiter_name, waiter_personality = waiter(waiter_pick)
 if waiter_name == "Antonia":
     print('"Hey bro!" You look up to see a somewhat chubby woman, who also looks pretty strong, who wears a suit like the rest of the staff here. "Hey, you gonna keep staring at me or what? Welp I\'m gonna be your waiter today. So just follow me! ')
-    print("As you follow her to your table you look around the resturant, as you see a lot of people eat sardines... While Antonia yaps about the history of this resturant and how it used to be a sardine store. You notice Antonia has small red horns on her head, huh.\n While such things should be stranger, you just accept it.")
+    print("As you follow her to your table you look around the resturant, as you see a lot of people eat sardines... While Antonia yaps about the history of this resturant and how it used to be a sardine store. You notice Antonia has small red horns on her head, huh. While such things should be stranger, you just accept it.")
     time.sleep(random.randint(1,10))
     showMenu(waiter_name, waiter_personality)
     drink, main, side_one, side_two, dessert = getOrder()
@@ -297,12 +297,32 @@ if waiter_name == "Antonia":
             total += menu["Side Course"][item]
         elif item in menu["Dessert"]:
             total+= menu["Dessert"][item]
-    print(total)
-
+    total = round(total,2)
+    print('"Well bro i\'ll get that for you! Just wait right here!" Antonia yells as she waves bye to you and goes off.')
+    time.sleep(0,5)
+    print("You see Antonia bug another waiter, with white hair and golden highlights in his hair. She puts her arm around him, only to get pushed off by the man who's now blushing heavily... you think to yourself:\"Just get me my food already bro\" ")
+    time.sleep(random.randint(4,7))
+    print("You finally see Antonia come with your food. And once you finally eat it, you're filled with pure happiness.")
+    time.sleep(random.randint(4,7))
+    print('"Welp you seem finished with your food!" You see Antonia now holding the check. "Well bro, your bill is ')
 elif waiter_name == "Nero":
-    print('"Are you finished staring off into the distance?" You see a woman with a thin build, but looks fairly strong, and wears a suit like the rest of the staff here. "Well, I shall take you to your ')
-
-    
+    print('"Are you finished staring off into the distance?" You see a woman with a thin build, but looks fairly strong, and wears a suit like the rest of the staff here. "Well, I shall take you to your table. I am Nero, your waiter for today." ')
+    print("As you follow her to your table you look around the resturant, as you see someone who's collapsed on a bucket of sardines on the table... While a child runs around... is this really a five star resturant? You see Nero hold out her leg, as the kid trips on it. You notice Nero has medium length blue horns on her head, and she's wearing a cast on her right arm. huh. You just accept it and hope the food is good.")
+    time.sleep(random.randint(1,10))
+    showMenu(waiter_name, waiter_personality)
+    drink, main, side_one, side_two, dessert = getOrder()
+    target_items = [drink, main, side_one, side_two, dessert]
+    total = 0
+    for item in target_items:
+        if item in menu["Drinks"]:
+            total += menu["Drinks"][item]
+        elif item in menu["Main Course"]:
+            total += menu["Main Course"][item]
+        elif item in menu["Side Course"]:
+            total += menu["Side Course"][item]
+        elif item in menu["Dessert"]:
+            total+= menu["Dessert"][item]
+    print(total)    
 
 
 
