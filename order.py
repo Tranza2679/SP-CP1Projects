@@ -129,16 +129,59 @@ def showMenu(name,personality):
         print("-" * 60)
         for i in range(0,len(main_items)):
             print(f"item name: {main_items[i]}. Item price: {price_main[i]}")
+            time.sleep(0.25)
         print("-" * 60)
         for i in range(0,len(side_items)):
             print(f"item name: {side_items[i]}. Item price: {price_side[i]}")
+            time.sleep(0.25)
         print("-" * 60)
         for i in range(0,len(dessert)):
             print(f"Item name: {dessert[i]}.  Item price: {price_dessert[i]}")
+            time.sleep(0.25)
     elif name == "Icarus" and waiter_personality == "Tsundere":
-        print('"Here\'s the menu. It\'s sad that I have to be a waiter in a resturant considering the wealth my family holds, and to be placed in the same resturant as my rival Antonia... Just order already!!!!" He yells at you slightly before handing the menu to you, as his foot taps impatiently on the ground as you read it off')
-        
-
+        print('"Here\'s the menu. It\'s sad that I have to be a waiter in a resturant considering the wealth my family holds, and to be placed in the same resturant as my rival Antonia... Just order already!!!!" He yells at you slightly before handing the menu to you, as his foot taps impatiently on the ground as you read it off.')
+        print("You read off the items in the menu.")
+        print("You read the drink section... Then the Main Course section... Then the Side Course section... and lastly the desserts...")
+        print("-" * 60)
+        for i in range(0, len(drinks)):
+            print(f"item name: {drinks[i]}. item price: {price_drinks[i]}")
+            time.sleep(0.25)
+        print("-" * 60)
+        for i in range(0,len(main_items)):
+            print(f"item name: {main_items[i]}. Item price: {price_main[i]}")
+            time.sleep(0.25)
+        print("-" * 60)
+        for i in range(0,len(side_items)):
+            print(f"item name: {side_items[i]}. Item price: {price_side[i]}")
+            time.sleep(0.25)
+        print("-" * 60)
+        for i in range(0,len(dessert)):
+            print(f"Item name: {dessert[i]}.  Item price: {price_dessert[i]}")
+            time.sleep(0.25)
+        print("-" * 60)
+    elif name == "Franco" and waiter_personality == "Orderly":
+        print('"Well boss, you came here to eat. I will not recommend you anything, as I\'m supposed to tell you that everything here is equally delicous. So I hope that you are able to decide for yourself. I am also inclined to tell you that this place was built on a resturant that sold only sardines, so after the purchase of this resturant we still have an ample amount of sardines to use to our disposal..." He trails off at the end, but hands you the menu as he paitently awaits your order.')
+        print("You read off the items in the menu.")
+        print("You read the drink section... Then the Main Course section... Then the Side Course section... and lastly the desserts...")
+        print("-" * 60)
+        for i in range(0, len(drinks)):
+            print(f"item name: {drinks[i]}. item price: {price_drinks[i]}")
+            time.sleep(0.25)
+        print("-" * 60)
+        for i in range(0,len(main_items)):
+            print(f"item name: {main_items[i]}. Item price: {price_main[i]}")
+            time.sleep(0.25)
+        print("-" * 60)
+        for i in range(0,len(side_items)):
+            print(f"item name: {side_items[i]}. Item price: {price_side[i]}")
+            time.sleep(0.25)
+        print("-" * 60)
+        for i in range(0,len(dessert)):
+            print(f"Item name: {dessert[i]}.  Item price: {price_dessert[i]}")
+            time.sleep(0.25)
+        print("-" * 60)
+    elif name == "Verbena" and waiter_personality == "Like Jabber":
+        print('"Well, probably should give ya the menu. I don\'t suggest anything here being honest but you do you dawg. Here ya go, have fun choosing what poison you want." She hands you the menu, as she eyes the plant on your table')
 
 print("You enter a newly opened fancy resturant! Or what looks to be a fancy resturant... Anyways you sit down and wait to be greeted by a waiter.")
 #time.sleep(random.randint(1,10))
