@@ -299,12 +299,12 @@ if waiter_name == "Antonia":
             total+= menu["Dessert"][item]
     total = round(total,2)
     print('"Well bro i\'ll get that for you! Just wait right here!" Antonia yells as she waves bye to you and goes off.')
-    time.sleep(0,5)
+    time.sleep(5)
     print("You see Antonia bug another waiter, with white hair and golden highlights in his hair. She puts her arm around him, only to get pushed off by the man who's now blushing heavily... you think to yourself:\"Just get me my food already bro\" ")
     time.sleep(random.randint(4,7))
-    print("You finally see Antonia come with your food. And once you finally eat it, you're filled with pure happiness.")
+    print("You finally see Antonia come with your food. The food looks like it may have been slightly eaten but who cares. And once you finally eat it, you're filled with pure happiness.")
     time.sleep(random.randint(4,7))
-    print('"Welp you seem finished with your food!" You see Antonia now holding the check. "Well bro, your bill is ')
+    print(f'"Welp you seem finished with your food!" You see Antonia now holding the check. "Well bro, your bill is {total}!')
 elif waiter_name == "Nero":
     print('"Are you finished staring off into the distance?" You see a woman with a thin build, but looks fairly strong, and wears a suit like the rest of the staff here. "Well, I shall take you to your table. I am Nero, your waiter for today." ')
     print("As you follow her to your table you look around the resturant, as you see someone who's collapsed on a bucket of sardines on the table... While a child runs around... is this really a five star resturant? You see Nero hold out her leg, as the kid trips on it. You notice Nero has medium length blue horns on her head, and she's wearing a cast on her right arm. huh. You just accept it and hope the food is good.")
@@ -322,8 +322,38 @@ elif waiter_name == "Nero":
             total += menu["Side Course"][item]
         elif item in menu["Dessert"]:
             total+= menu["Dessert"][item]
-    print(total)    
-
-
-
-
+    total = round(total,2)
+    print('"Well I shall get that for you. It won\'t take long I promise you." Nero nods at you as she goes off.')    
+    time.sleep(5)
+    print("You see Nero arm wrestle with another waiter with red horns. Looks like they are in a stalemate... You wonder to yourself how long it will take for your food to come in.")
+    time.sleep(random.randint(5,7))
+    print("Nero seems to head butt the waiter. This causes Nero to get kicked by the waiter, and Nero decides to finally get your food. Your food is slightly cold, but at least it still tastes amazing")
+    time.sleep(random.randint(4,7))
+    print(f'"Well it seems you have finished your meal." You see Nero holding the check. "Well your total bill is {total}.')
+elif waiter_name == "Icarus":
+    print('"Hey, you there? Well anyways I\'m Icarus Archer and your waiter for today..." He seems annoyed at your prescence, and grumbles the fact that he has to be a waiter. ')
+    print("As you go to your table, Icarus talks to you about how honorable his family is and how they own this resurant and that he shouldn't work for them as just a simple waiter... You zone out most of what he says honesly. He talks about how much he dislikes one waiter here named Antonia... you really don't care. At least his hair looks nice with, with it being white and having golden highlights.")
+    time.sleep(random.randint(1,10))
+    showMenu(waiter_name, waiter_personality)
+    drink, main, side_one, side_two, dessert = getOrder()
+    target_items = [drink, main, side_one, side_two, dessert]
+    total = 0
+    for item in target_items:
+        if item in menu["Drinks"]:
+            total += menu["Drinks"][item]
+        elif item in menu["Main Course"]:
+            total += menu["Main Course"][item]
+        elif item in menu["Side Course"]:
+            total += menu["Side Course"][item]
+        elif item in menu["Dessert"]:
+            total+= menu["Dessert"][item]
+    total = round(total,2)
+    print('"Well whatever, I\'ll get it for you, ugh." Icarus stomps off, as he goes away.')
+    time.sleep(5)
+    print("You notice Icarus waiting at the kitchen, while a girl with red horns teases him. He's trying his best to ignore her, and failing at it. You wonder how long it will take you for your food to get here.")
+    time.sleep(random.randint(4,7))
+    print("Icarus finally arrives ")
+elif waiter_name == "Franco":
+    pass
+elif waiter_name == "Verbena":
+    pass
