@@ -94,14 +94,6 @@ def waiter(number_choice):
         waiter_name = "Icarus"
         waiter_personality = "Tsundere"
         return waiter_name, waiter_personality
-    elif number_choice == 4:
-        waiter_name = "Franco"
-        waiter_personality = "Orderly"
-        return waiter_name, waiter_personality
-    elif number_choice == 5:
-        waiter_name = "Verbena"
-        waiter_personality = "Like Jabber"
-        return waiter_name, waiter_personality
     
 def showMenu(name,personality):
     if name == "Antonia" and personality == "Brash":
@@ -168,50 +160,7 @@ def showMenu(name,personality):
             print(f"Item name: {desserts[i]}.  Item price: {price_dessert[i]}")
             time.sleep(0.25)
         print("-" * 60)
-    elif name == "Franco" and personality == "Orderly":
-        print('"Well boss, you came here to eat. I will not recommend you anything, as I\'m supposed to tell you that everything here is equally delicous. So I hope that you are able to decide for yourself. I am also inclined to tell you that this place was built on a resturant that sold only sardines, so after the purchase of this resturant we still have an ample amount of sardines to use to our disposal..." He trails off at the end, but hands you the menu as he paitently awaits your order.')
-        time.sleep(5)
-        print("You read off the items in the menu.")
-        print("You read the drink section... Then the Main Course section... Then the Side Course section... and lastly the desserts...")
-        print("-" * 60)
-        for i in range(0, len(drinks)):
-            print(f"item name: {drinks[i]}. item price: {price_drinks[i]}")
-            time.sleep(0.25)
-        print("-" * 60)
-        for i in range(0,len(main_items)):
-            print(f"item name: {main_items[i]}. Item price: {price_main[i]}")
-            time.sleep(0.25)
-        print("-" * 60)
-        for i in range(0,len(side_items)):
-            print(f"item name: {side_items[i]}. Item price: {price_side[i]}")
-            time.sleep(0.25)
-        print("-" * 60)
-        for i in range(0,len(desserts)):
-            print(f"Item name: {desserts[i]}.  Item price: {price_dessert[i]}")
-            time.sleep(0.25)
-        print("-" * 60)
-    elif name == "Verbena" and personality == "Like Jabber":
-        print('"Well, probably should give ya the menu. I don\'t suggest anything here being honest but you do you dawg. Here ya go, have fun choosing what poison you want." She hands you the menu, as she eyes the plant on your table')
-        time.sleep(5)
-        print("You read off the items in the menu.")
-        print("You read the drink section... Then the Main Course section... Then the Side Course section... and lastly the desserts...")
-        print("-" * 60)
-        for i in range(0, len(drinks)):
-            print(f"item name: {drinks[i]}. item price: {price_drinks[i]}")
-            time.sleep(0.25)
-        print("-" * 60)
-        for i in range(0,len(main_items)):
-            print(f"item name: {main_items[i]}. Item price: {price_main[i]}")
-            time.sleep(0.25)
-        print("-" * 60)
-        for i in range(0,len(side_items)):
-            print(f"item name: {side_items[i]}. Item price: {price_side[i]}")
-            time.sleep(0.25)
-        print("-" * 60)
-        for i in range(0,len(desserts)):
-            print(f"Item name: {desserts[i]}.  Item price: {price_dessert[i]}")
-            time.sleep(0.25)
-        print("-" * 60)
+   
 
 def getOrder():
     global drink
@@ -277,8 +226,7 @@ def getOrder():
 
 print("You enter a newly opened fancy resturant! Or what looks to be a fancy resturant... Anyways you sit down and wait to be greeted by a waiter.")
 time.sleep(random.randint(1,10))
-waiter_pick = random.randint(1,5)
-waiter_pick = 1
+waiter_pick = random.randint(1,3)
 waiter_name, waiter_personality = waiter(waiter_pick)
 if waiter_name == "Antonia":
     print('"Hey bro!" You look up to see a somewhat chubby woman, who also looks pretty strong, who wears a suit like the rest of the staff here. "Hey, you gonna keep staring at me or what? Welp I\'m gonna be your waiter today. So just follow me! ')
@@ -352,8 +300,6 @@ elif waiter_name == "Icarus":
     time.sleep(5)
     print("You notice Icarus waiting at the kitchen, while a girl with red horns teases him. He's trying his best to ignore her, and failing at it. You wonder how long it will take you for your food to get here.")
     time.sleep(random.randint(4,7))
-    print("Icarus finally arrives ")
-elif waiter_name == "Franco":
-    pass
-elif waiter_name == "Verbena":
-    pass
+    print("Icarus finally arrives with your food. You eat the food with delight and bliss.")
+    time.sleep(random.randint(4,7))
+    print(f'"Are you finished yet?" You see Icarus holding the check. "Well anyways, your total bill is {total}.')
