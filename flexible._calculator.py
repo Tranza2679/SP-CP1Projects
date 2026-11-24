@@ -18,6 +18,7 @@ def calc_sum(*args): #FINDS the sum of a list by adding every number in that lis
 
 def calc_average(*args): #FINDS the average of all numbers in a list that is given to it, works the same as a sum besides it having i increase for every number added before dividing the total by i to find the average 
     i = 0
+    total = 0
     for num in args:
         total += num
         i += 1
