@@ -26,7 +26,7 @@ def average(*args): #FINDS the average of all numbers in a list that is given to
     total /= i 
     return total
 
-def max(*args):
+def max(*args): #FINDS the maximum of a list given to it, and loops through every number seeing if its larger than the last number given. Starts as the first number given
     global max_num
     for num in args:
         if max_num < num:
@@ -66,7 +66,7 @@ def getNum(): #Meant to get the number the user wants, and if they put done then
                 print("Please write a number or done")
     return number_list
 
-def calc(op, *args):
+def calc(op, *args): #The main calculator for the program, just acts as a way to get the specific result and display it for the list and operation given to us.
     global final_num
     if op == "sum":
         final_num = sum(*args)
