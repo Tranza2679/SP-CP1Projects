@@ -2,14 +2,6 @@
 #Make calculator function
 #Max goes through the numbers and changes it if it is higher than the last number
 #Min does the opposite 
-max_num = 0
-number_list = []
-total = 0
-min_num = 0
-product_num = 0
-num = 0
-final_num = 0 
-i = 0
 def calc_sum(*args): #FINDS the sum of a list by adding every number in that list individually before returning the final number.
     total = 0
     for num in args:
@@ -50,6 +42,7 @@ def calc_product(*args): #FINDS the product of all numbers given to it, and retu
     return product_num
 
 def getNum(): #Meant to get the number the user wants, and if they put done then it stops. If they put something that isn't done, then it prints an error message and repeats
+    number_list = []
     while True:
         num = input("Number: ").lower().strip()
         if num == "done":
@@ -89,7 +82,7 @@ while True:
             print("Please try again.")
         else:
             break
-    number_list = getNum()
+    number_list= getNum()
     while True:
         if len(number_list) == 0:
             print("Please write something!!!!")
