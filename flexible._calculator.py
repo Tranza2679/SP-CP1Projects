@@ -10,13 +10,13 @@ product_num = 0
 num = 0
 final_num = 0 
 i = 0
-def sum(*args):
+def sum(*args): #FINDS the sum of a list by adding every number in that list individually before returning the final number.
     global total 
     for num in args:
         total += num
     return total
 
-def average(*args):
+def average(*args): #FINDS the average of all numbers in a list that is given to it, works the same as a sum besides it having i increase for every number added before dividing the total by i to find the average 
     global total
     global i
     i = 0
@@ -35,9 +35,9 @@ def max(*args):
             pass
     return max_num
 
-def min(*args):
+def min(*args): #FINDS the mininum number of a list given to it, and loops through every number seeing if there a smaller number and returns the smallest value.
     global min_num 
-    min_num = args[0]
+    min_num = args[0] #SET to the first number in the list of numbers given
     for num in args:
         if min_num > num:
             min_num = num
@@ -45,14 +45,14 @@ def min(*args):
             pass
     return min_num
 
-def product(*args):
+def product(*args): #FINDS the product of all numbers given to it, and returns the final number
     global product_num
-    product_num = args[0]
+    product_num = 1 #Set to 1 just so it has no noticeable effect 
     for num in args:
-        product_num *= num
+        product_num = product_num * num 
     return product_num
 
-def getNum():
+def getNum(): #Meant to get the number the user wants, and if they put done then it stops. If they put something that isn't done, then it prints an error message and repeats
     global number_list
     global num
     while True:
@@ -61,7 +61,7 @@ def getNum():
             break
         else:
             try:
-                number_list.append(int(num))
+                number_list.append(float(num))
             except ValueError:
                 print("Please write a number or done")
     return number_list

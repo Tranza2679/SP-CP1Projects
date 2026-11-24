@@ -1,0 +1,26 @@
+santiago Pineda 
+IMPORT random
+IMPORT turtle
+
+DEFINE setup_screen
+    SET screen title as Maze Generator 
+    SET screen height and width 
+    DRAW the box 
+
+DEFINE carve_path
+    REPEAT for every row in rows
+        SET the location of the turtle 
+        REPEAT for every num in *args
+            IF num == 1:
+                SET the turtle down
+                DRAW a line 
+            ELSE:
+                SET the turtle up
+            
+DEFINE generate_maze
+
+DEFINE draw_square
+
+DEFINE draw_maze
+
+DEFINE main
