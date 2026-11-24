@@ -9,6 +9,7 @@ min_num = 0
 product_num = 0
 num = 0
 final_num = 0 
+i = 0
 def sum(*args):
     global total 
     for num in args:
@@ -17,6 +18,8 @@ def sum(*args):
 
 def average(*args):
     global total
+    global i
+    i = 0
     for num in args:
         total += num
         i += 1
@@ -53,41 +56,31 @@ def getNum():
     global number_list
     global num
     while True:
-        try:
-            num = input("Number: ") 
-            if isinstance(num, int):
-                number_list.append(num)
-            elif isinstance(num, str):
-                if num == "done":
-                    break
-                else:
-                    print("Please write done or an actual number")
-                    continue
-            else:
-                continue
-        except:
-            print("Please write done or an actual number")
-        else:
+        num = input("Number: ").lower().strip()
+        if num == "done":
             break
+        else:
+            try:
+                number_list.append(int(num))
+            except ValueError:
+                print("Please write a number or done")
     return number_list
 
 def calc(op, *args):
     global final_num
     if op == "sum":
         final_num = sum(*args)
-        print(f"Result: {final_num}")
     elif op == "average":
         final_num = average(*args)
-        print(f"Result: {final_num}")
     elif op == "max":
         final_num = max(*args)
-        print(f"Result: {final_num}")
     elif op == "min":
         final_num = min(*args)
-        print(f"Result: {final_num}")
     elif op == "product":
         final_num = product(*args)
-        print(f"Result: {final_num}")
+
+    print(f"Result: {final_num}")
+    return final_num
 
 print("Hello! Welcome to Flexible Calculator!")
 print("Available operaions: sum, average, max, min, product.")
@@ -104,20 +97,20 @@ while True:
             break
     number_list = getNum()
     if operation == "sum":
-        print(*f"Calculating sum of {number_list}")
-        calc(operation, number_list)
+        print("Calculating sum of", *number_list)
+        calc(operation, *number_list)
     elif operation == "average":
-        print(*f"Calculating average of {number_list}")
-        calc(operation, number_list)
+        print("Calculating average of", *number_list)      
+        calc(operation, *number_list)
     elif operation == "max":
-        print(*f"Calculating maximum of {number_list}")
-        calc(operation, number_list)
+        print("Calculating maximum of", *number_list)
+        calc(operation, *number_list)
     elif operation == "min":
-        print(*f"Calculating mininum of {number_list}")
-        calc(operation, number_list)
+        print("Calculating mininum of", *number_list)
+        calc(operation, *number_list)
     elif operation == "product":
-        print(*f"Calculating product of {number_list}")
-        calc(operation, number_list)
+        print("Calculating product of", *number_list)
+        calc(operation, *number_list)
     else:
         print("I have no idea how this happened, but if it did, then beats me.")
         break
@@ -125,7 +118,7 @@ while True:
     while True:
         try:
             user_input = str(input("Do you want to continue with this program: ")).lower().strip()
-            if user_input != "yes" or user_input != "no":
+            if user_input != "yes" and user_input != "no":
                 print("Please write yes or no.")
                 continue
         except:
