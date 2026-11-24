@@ -10,15 +10,13 @@ product_num = 0
 num = 0
 final_num = 0 
 i = 0
-def sum(*args): #FINDS the sum of a list by adding every number in that list individually before returning the final number.
-    global total 
+def calc_sum(*args): #FINDS the sum of a list by adding every number in that list individually before returning the final number.
+    total = 0
     for num in args:
         total += num
     return total
 
-def average(*args): #FINDS the average of all numbers in a list that is given to it, works the same as a sum besides it having i increase for every number added before dividing the total by i to find the average 
-    global total
-    global i
+def calc_average(*args): #FINDS the average of all numbers in a list that is given to it, works the same as a sum besides it having i increase for every number added before dividing the total by i to find the average 
     i = 0
     for num in args:
         total += num
@@ -26,8 +24,8 @@ def average(*args): #FINDS the average of all numbers in a list that is given to
     total /= i 
     return total
 
-def max(*args): #FINDS the maximum of a list given to it, and loops through every number seeing if its larger than the last number given. Starts as the first number given
-    global max_num
+def calc_max(*args): #FINDS the maximum of a list given to it, and loops through every number seeing if its larger than the last number given. Starts as the first number given
+    max_num = args[0]
     for num in args:
         if max_num < num:
             max_num = num
@@ -35,8 +33,7 @@ def max(*args): #FINDS the maximum of a list given to it, and loops through ever
             pass
     return max_num
 
-def min(*args): #FINDS the mininum number of a list given to it, and loops through every number seeing if there a smaller number and returns the smallest value.
-    global min_num 
+def calc_min(*args): #FINDS the mininum number of a list given to it, and loops through every number seeing if there a smaller number and returns the smallest value.
     min_num = args[0] #SET to the first number in the list of numbers given
     for num in args:
         if min_num > num:
@@ -45,16 +42,13 @@ def min(*args): #FINDS the mininum number of a list given to it, and loops throu
             pass
     return min_num
 
-def product(*args): #FINDS the product of all numbers given to it, and returns the final number
-    global product_num
+def calc_product(*args): #FINDS the product of all numbers given to it, and returns the final number
     product_num = 1 #Set to 1 just so it has no noticeable effect 
     for num in args:
         product_num = product_num * num 
     return product_num
 
 def getNum(): #Meant to get the number the user wants, and if they put done then it stops. If they put something that isn't done, then it prints an error message and repeats
-    global number_list
-    global num
     while True:
         num = input("Number: ").lower().strip()
         if num == "done":
@@ -66,18 +60,17 @@ def getNum(): #Meant to get the number the user wants, and if they put done then
                 print("Please write a number or done")
     return number_list
 
-def calc(op, *args): #The main calculator for the program, just acts as a way to get the specific result and display it for the list and operation given to us.
-    global final_num
+def calc(op, *args): #The main calculator for the program, just acts as a way to get the specific result and display it for the list and operation given to us
     if op == "sum":
-        final_num = sum(*args)
+        final_num = calc_sum(*args)
     elif op == "average":
-        final_num = average(*args)
+        final_num = calc_average(*args)
     elif op == "max":
-        final_num = max(*args)
+        final_num = calc_max(*args)
     elif op == "min":
-        final_num = min(*args)
+        final_num = calc_min(*args)
     elif op == "product":
-        final_num = product(*args)
+        final_num = calc_product(*args)
 
     print(f"Result: {final_num}")
     return final_num
@@ -96,6 +89,13 @@ while True:
         else:
             break
     number_list = getNum()
+    while True:
+        if len(number_list) == 0:
+            print("Please write something!!!!")
+            number_list = getNum()
+        else:
+            break
+
     if operation == "sum":
         print("Calculating sum of", *number_list)
         calc(operation, *number_list)
